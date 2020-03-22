@@ -9,10 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    //MARK: Outlets
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var photoSearchBar: UISearchBar!
     
+    private var reuseIdentifier = "PhotoCell"
+    
+    //Fetch and reload data
     var listOfPhotos = [PhotoDetail]() {
         didSet {
             DispatchQueue.main.async {
@@ -25,64 +29,86 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.photoCollectionView.register(UINib.init(nibName: "FotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FotoCollectionViewCell")
+        self.navigationItem.title = "Suwar"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
         
+        print(photoCollectionView.frame.size.width/2)
+        
         photoSearchBar.delegate = self
         
         
-        // Do any additional setup after loading the view.
+        //Implement Layout
+        
+        let itemSize = UIScreen.main.bounds.width
+
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: itemSize, height: itemSize)
+
+        layout.minimumInteritemSpacing = 3
+        layout.minimumLineSpacing = 3
+
+        photoCollectionView.collectionViewLayout = layout
         
         //check rest API
 //        startRestApi()
     }
     
-    func startRestApi(){
-        let photoRequest = PhotoRequest(searchInput: "office")
-        photoRequest.getPhotos { (result) in
-            print(result)
-        }
-        photoRequest.getPhotos { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error)
-                print("error here")
-            case .success(let photos):
-                self?.listOfPhotos = photos
-            }
-        }
-    }
+//    func startRestApi(){
+//        let photoRequest = PhotoRequest(searchInput: "office")
+//        photoRequest.getPhotos { (result) in
+//            print(result)
+//        }
+//        photoRequest.getPhotos { [weak self] result in
+//            switch result {
+//            case .failure(let error):
+//                print(error)
+//                print("error here")
+//            case .success(let photos):
+//                self?.listOfPhotos = photos
+//            }
+//        }
+//    }
 
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+//MARK: Flow Layout
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfColumns: CGFloat = 2
+        let width = collectionView.frame.size.width
+        let scaleFactor = (width/numberOfColumns) - 5
+        return CGSize(width: scaleFactor, height: scaleFactor)
     }
+}
+
+//MARK: Data Source
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listOfPhotos.count
+//        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FotoCollectionViewCell",
-        for: indexPath) as! FotoCollectionViewCell
         
-        let photo = listOfPhotos[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
+        cell.photoImageView.image = UIImage(named: "logo")
+        cell.layer.cornerRadius = 10
         
-        cell.descriptionLabel.text = photo.id
-        cell.photoImageView.image = UIImage(named: "\(photo.urls.thumb)")
-        cell.backgroundColor = .blue
-//        cell.descriptionLabel.text = "Label TES"
+        let photo = listOfPhotos[indexPath.item]
+        
+        cell.photoLabel.text = String(photo.width)
+//        cell.photoImageView.image = UIImage(named: "\(photo.urls.thumb)")
         
         return cell
     }
-    
-    
 }
+
+
 
 extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
