@@ -17,6 +17,7 @@
 		ED9F01FB2426F22C008AAB35 /* PhotoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F01FA2426F22C008AAB35 /* PhotoRequest.swift */; };
 		ED9F022524274875008AAB35 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F022424274875008AAB35 /* PhotoCell.swift */; };
 		ED9F022724274A8B008AAB35 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F022624274A8B008AAB35 /* HomeViewController.swift */; };
+		ED9F022924277E6C008AAB35 /* PhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F022824277E6C008AAB35 /* PhotoLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		ED9F01FA2426F22C008AAB35 /* PhotoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRequest.swift; sourceTree = "<group>"; };
 		ED9F022424274875008AAB35 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		ED9F022624274A8B008AAB35 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		ED9F022824277E6C008AAB35 /* PhotoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				ED9F01992425F9C1008AAB35 /* Main.storyboard */,
 				ED9F022424274875008AAB35 /* PhotoCell.swift */,
+				ED9F022824277E6C008AAB35 /* PhotoLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				ED9F01AB2425FAB7008AAB35 /* Photo.swift in Sources */,
 				ED9F01982425F9C1008AAB35 /* ViewController.swift in Sources */,
 				ED9F022724274A8B008AAB35 /* HomeViewController.swift in Sources */,
+				ED9F022924277E6C008AAB35 /* PhotoLayout.swift in Sources */,
 				ED9F01942425F9C1008AAB35 /* AppDelegate.swift in Sources */,
 				ED9F01FB2426F22C008AAB35 /* PhotoRequest.swift in Sources */,
 				ED9F01962425F9C1008AAB35 /* SceneDelegate.swift in Sources */,

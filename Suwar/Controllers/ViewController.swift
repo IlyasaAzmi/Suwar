@@ -42,16 +42,20 @@ class ViewController: UIViewController {
         
         //Implement Layout
         
-        let itemSize = UIScreen.main.bounds.width
+//        let itemSize = UIScreen.main.bounds.width
 
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: itemSize, height: itemSize)
-
-        layout.minimumInteritemSpacing = 3
-        layout.minimumLineSpacing = 3
-
-        photoCollectionView.collectionViewLayout = layout
+//        let layout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//        layout.itemSize = CGSize(width: itemSize, height: itemSize)
+//
+//        layout.minimumInteritemSpacing = 3
+//        layout.minimumLineSpacing = 3
+//        photoCollectionView.collectionViewLayout = layout
+        
+        if let layout = photoCollectionView.collectionViewLayout as? PhotoLayout {
+                   layout.delegate = self
+               }
+               photoCollectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         //check rest API
 //        startRestApi()
@@ -76,13 +80,28 @@ class ViewController: UIViewController {
 }
 
 //MARK: Flow Layout
-extension ViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let numberOfColumns: CGFloat = 2
-        let width = collectionView.frame.size.width
-        let scaleFactor = (width/numberOfColumns) - 5
-        return CGSize(width: scaleFactor, height: scaleFactor)
+//extension ViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let numberOfColumns: CGFloat = 2
+//        let width = collectionView.frame.size.width
+//        let xInsets: CGFloat = 10
+//        let cellSpacing:CGFloat = 5
+//        let photo = listOfPhotos[indexPath.item]
+//        let height = photo.height / 10
+//
+//        return CGSize(width: (width/numberOfColumns) - (xInsets + cellSpacing), height: CGFloat(height))
+//    }
+//}
+
+extension ViewController: PhotoLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
+        let photo = listOfPhotos[indexPath.item]
+        let height = photo.height / 10
+        
+        return CGFloat(height)
     }
+    
+    
 }
 
 //MARK: Data Source
@@ -112,7 +131,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
 extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("tapped")
+        
         guard let searchBarText = photoSearchBar.text else {return}
         let photoRequest = PhotoRequest(searchInput: searchBarText)
         photoRequest.getPhotos { [weak self] result in
@@ -123,6 +142,7 @@ extension ViewController: UISearchBarDelegate {
                 self?.listOfPhotos = photos
             }
         }
+        print("tapped \(searchBarText)")
     }
 }
 
