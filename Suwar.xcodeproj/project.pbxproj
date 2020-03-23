@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC9C145A93212EC9B31E998A /* Pods_Suwar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31975023CC0AB4C87A9999E1 /* Pods_Suwar.framework */; };
 		ED9F01942425F9C1008AAB35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F01932425F9C1008AAB35 /* AppDelegate.swift */; };
 		ED9F01962425F9C1008AAB35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F01952425F9C1008AAB35 /* SceneDelegate.swift */; };
 		ED9F01982425F9C1008AAB35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F01972425F9C1008AAB35 /* ViewController.swift */; };
@@ -16,11 +17,13 @@
 		ED9F01AB2425FAB7008AAB35 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F01AA2425FAB7008AAB35 /* Photo.swift */; };
 		ED9F01FB2426F22C008AAB35 /* PhotoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F01FA2426F22C008AAB35 /* PhotoRequest.swift */; };
 		ED9F022524274875008AAB35 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F022424274875008AAB35 /* PhotoCell.swift */; };
-		ED9F022724274A8B008AAB35 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F022624274A8B008AAB35 /* HomeViewController.swift */; };
 		ED9F022924277E6C008AAB35 /* PhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F022824277E6C008AAB35 /* PhotoLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19F75D85DC8C25F2BC68830A /* Pods-Suwar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Suwar.release.xcconfig"; path = "Target Support Files/Pods-Suwar/Pods-Suwar.release.xcconfig"; sourceTree = "<group>"; };
+		31975023CC0AB4C87A9999E1 /* Pods_Suwar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Suwar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4C63EBCC8E1C07A7D97CED0 /* Pods-Suwar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Suwar.debug.xcconfig"; path = "Target Support Files/Pods-Suwar/Pods-Suwar.debug.xcconfig"; sourceTree = "<group>"; };
 		ED9F01902425F9C1008AAB35 /* Suwar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Suwar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9F01932425F9C1008AAB35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9F01952425F9C1008AAB35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,7 +35,6 @@
 		ED9F01AA2425FAB7008AAB35 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		ED9F01FA2426F22C008AAB35 /* PhotoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRequest.swift; sourceTree = "<group>"; };
 		ED9F022424274875008AAB35 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
-		ED9F022624274A8B008AAB35 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ED9F022824277E6C008AAB35 /* PhotoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC9C145A93212EC9B31E998A /* Pods_Suwar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		789A30E6B06CBF5282ED7ACD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31975023CC0AB4C87A9999E1 /* Pods_Suwar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB27169DB7C02884C7B80A5D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4C63EBCC8E1C07A7D97CED0 /* Pods-Suwar.debug.xcconfig */,
+				19F75D85DC8C25F2BC68830A /* Pods-Suwar.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		ED9F01872425F9C1008AAB35 = {
 			isa = PBXGroup;
 			children = (
 				ED9F01922425F9C1008AAB35 /* Suwar */,
 				ED9F01912425F9C1008AAB35 /* Products */,
+				EB27169DB7C02884C7B80A5D /* Pods */,
+				789A30E6B06CBF5282ED7ACD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,10 +93,10 @@
 				ED9F01A92425FAA2008AAB35 /* Models */,
 				ED9F01A72425FA77008AAB35 /* Controllers */,
 				ED9F01A82425FA87008AAB35 /* Views */,
+				ED9F022A2427A924008AAB35 /* Netowrking */,
 				ED9F019C2425F9C3008AAB35 /* Assets.xcassets */,
 				ED9F019E2425F9C3008AAB35 /* LaunchScreen.storyboard */,
 				ED9F01A12425F9C3008AAB35 /* Info.plist */,
-				ED9F01FA2426F22C008AAB35 /* PhotoRequest.swift */,
 			);
 			path = Suwar;
 			sourceTree = "<group>";
@@ -83,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				ED9F01972425F9C1008AAB35 /* ViewController.swift */,
-				ED9F022624274A8B008AAB35 /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -106,6 +127,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		ED9F022A2427A924008AAB35 /* Netowrking */ = {
+			isa = PBXGroup;
+			children = (
+				ED9F01FA2426F22C008AAB35 /* PhotoRequest.swift */,
+			);
+			path = Netowrking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +142,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED9F01A42425F9C3008AAB35 /* Build configuration list for PBXNativeTarget "Suwar" */;
 			buildPhases = (
+				BBACC90E899C858969092097 /* [CP] Check Pods Manifest.lock */,
 				ED9F018C2425F9C1008AAB35 /* Sources */,
 				ED9F018D2425F9C1008AAB35 /* Frameworks */,
 				ED9F018E2425F9C1008AAB35 /* Resources */,
+				8E037F79C6339AC3FEE1994B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,6 +203,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8E037F79C6339AC3FEE1994B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Suwar/Pods-Suwar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Suwar/Pods-Suwar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Suwar/Pods-Suwar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBACC90E899C858969092097 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Suwar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ED9F018C2425F9C1008AAB35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -180,7 +253,6 @@
 				ED9F022524274875008AAB35 /* PhotoCell.swift in Sources */,
 				ED9F01AB2425FAB7008AAB35 /* Photo.swift in Sources */,
 				ED9F01982425F9C1008AAB35 /* ViewController.swift in Sources */,
-				ED9F022724274A8B008AAB35 /* HomeViewController.swift in Sources */,
 				ED9F022924277E6C008AAB35 /* PhotoLayout.swift in Sources */,
 				ED9F01942425F9C1008AAB35 /* AppDelegate.swift in Sources */,
 				ED9F01FB2426F22C008AAB35 /* PhotoRequest.swift in Sources */,
@@ -326,6 +398,7 @@
 		};
 		ED9F01A52425F9C3008AAB35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4C63EBCC8E1C07A7D97CED0 /* Pods-Suwar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -344,6 +417,7 @@
 		};
 		ED9F01A62425F9C3008AAB35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19F75D85DC8C25F2BC68830A /* Pods-Suwar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -36,6 +36,7 @@ struct PhotoRequest {
                 let decoder = JSONDecoder()
                 let photoResults = try decoder.decode(PhotoResults.self, from: jsonData)
                 let photoDetails = photoResults.results
+                
                 print(photoDetails)
                 completion(.success(photoDetails))
             } catch {
@@ -46,5 +47,7 @@ struct PhotoRequest {
         dataTask.resume()
     }
 }
+
+
 
 

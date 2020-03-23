@@ -16,8 +16,6 @@ struct PhotoDetail: Decodable {
     let id: String
     let width: Int
     let height: Int
-    let color: String
-    let description: String?
     let urls: UrlInfo
 }
 
