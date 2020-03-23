@@ -8,15 +8,12 @@
 
 import Foundation
 import UIKit
-import Combine
 import Kingfisher
 
 class PhotoCell: UICollectionViewCell {
     
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var photoLabel: UILabel!
-    
-    private var cancellable: AnyCancellable?
     
     public func configure(with photo: PhotoDetail) {
         

@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.photoCollectionView.reloadData()
-                self.navigationItem.title = self.photoSearchBar.text
             }
         }
     }
@@ -38,56 +37,37 @@ class ViewController: UIViewController {
         
         photoCollectionView.reloadData()
         
-        
+        setupFirst()
+
         //Implement Layout
         
         if let layout = photoCollectionView.collectionViewLayout as? PhotoLayout {
-                   layout.delegate = self
-               }
-               photoCollectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        
-        //check rest API
-//        startRestApi()
+            layout.delegate = self
+        }
+        photoCollectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
     }
-    
-//    func startRestApi(){
-//        let photoRequest = PhotoRequest(searchInput: "office")
-//        photoRequest.getPhotos { (result) in
-//            print(result)
-//        }
-//        photoRequest.getPhotos { [weak self] result in
-//            switch result {
-//            case .failure(let error):
-//                print(error)
-//                print("error here")
-//            case .success(let photos):
-//                self?.listOfPhotos = photos
-//            }
-//        }
-//    }
-    
-    
 
+    
+    func setupFirst() {
+        if self.photoSearchBar != nil {
+            let photoRequest = PhotoRequest(searchInput: "wallpaper")
+            photoRequest.getPhotos { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let photos):
+                    self?.listOfPhotos = photos
+                }
+            }
+        }
+    }
 }
-
-//MARK: Flow Layout
-//extension ViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let numberOfColumns: CGFloat = 2
-//        let width = collectionView.frame.size.width
-//        let xInsets: CGFloat = 10
-//        let cellSpacing:CGFloat = 5
-//        let photo = listOfPhotos[indexPath.item]
-//        let height = photo.height / 10
-//
-//        return CGSize(width: (width/numberOfColumns) - (xInsets + cellSpacing), height: CGFloat(height))
-//    }
-//}
 
 extension ViewController: PhotoLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
         let photo = listOfPhotos[indexPath.item]
-        let height = photo.height / 10
+        let height = photo.height / 12
         
         return CGFloat(height)
     }
@@ -130,5 +110,6 @@ extension ViewController: UISearchBarDelegate {
             }
         }
         print("on search \(searchBarText)")
+        self.photoSearchBar.endEditing(true)
     }
 }
